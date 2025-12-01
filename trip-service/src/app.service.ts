@@ -1,18 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Booking } from 'entities';
+import { User } from 'entities';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class AppService {
   constructor(
-    @InjectRepository(Booking)
-    private readonly bookingRepo: Repository<Booking>,
+    @InjectRepository(User)
+    private readonly userRepo: Repository<User>,
   ) {}
 
   async getHello(): Promise<string> {
-    const bookings = await this.bookingRepo.find();
+    const users = await this.userRepo.find({
+      relations: ['trips', 'trips.bookings', 'trips.bookings.flight'],
+    });
 
-    return JSON.stringify(bookings, null, 2);
+    return JSON.stringify(users);
   }
 }
