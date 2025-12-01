@@ -11,10 +11,8 @@ export class AppService {
   ) {}
 
   async getHello(): Promise<string> {
-    const bookings = await this.bookingRepo.find({
-      relations: ['trip', 'flight', 'trip.user'],
-    });
+    const bookings = await this.bookingRepo.find();
 
-    return JSON.stringify(bookings);
+    return JSON.stringify(bookings, null, 2);
   }
 }
