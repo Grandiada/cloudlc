@@ -1,0 +1,18 @@
+# Mark binary files as binary and disable text processing
+*.png binary -text
+*.jpg binary -text
+*.jpeg binary -text
+*.gif binary -text
+*.ico binary -text
+*.svg binary -text
+*.webp binary -text
+*.avif binary -text
+*.woff binary -text
+*.woff2 binary -text
+*.ttf binary -text
+*.eot binary -text
+*.otf binary -text
+*.pdf binary -text
+
+# Default: treat as text with LF for any remaining files
+* text=auto eol=lf
