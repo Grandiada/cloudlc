@@ -1,0 +1,20 @@
+services:
+  cancellation-service:
+    build:
+      context: .
+      dockerfile: ./apps/cancellation-service/Dockerfile
+    env_file:
+      - ./apps/cancellation-service/.env  # твой локальный .env
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
+
+  trip-service:
+    build:
+      context: .
+      dockerfile: ./apps/trip-service/Dockerfile
+    env_file:
+      - ./apps/trip-service/.env  # твой локальный .env
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

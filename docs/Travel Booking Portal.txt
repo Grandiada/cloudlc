@@ -1,0 +1,30 @@
+Travel Booking Portal
+TripService: Manages trip planning, bookings, and user profiles.
+FlightService: Handles flight schedules, availability, and API for flight info.
+CancellationService: Processes cancellations and notifies TripService via message broker.
+
+
+TripService FR
+	CRU Endpoints for "User" entity
+	CRU Endpoints for "Trip" entity
+	CRU Endpoints for "Booking" entity
+	After recieving message from CancellationService mark booking as canceled, and mark trip as required attention, decrease/increase flight availability
+	Healthcheck endpoint
+TripService NFR
+	Service should be live 90% of time (up-time)
+	Service should return 2**, 4** responses 9/10 times
+
+FlightService FR
+	CRU for "Flight" entity
+	Endpont for decrease/increase flight availability(seatsBooked/seatsTotal)
+	Create healthcheck endpoint
+FlightService NFR
+	Service should be live 90% of time (up-time)
+	Service should return 2**, 4** responses 9/10 times
+
+CancellationService FR
+	Create API POST endpoint to cancel specific booking, add timestamp to it and notify TripService about canceled booking via message
+	Create healthcheck endpoint
+CancellationService NFR
+	Service should be live 90% of time (up-time)
+	Messages should always be delivered to consumer
