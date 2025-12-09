@@ -7,7 +7,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
@@ -15,9 +14,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         type: 'mssql',
         host: 'travel-booking-portal-server.database.windows.net',
         port: 1433,
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
         username: config.get<string>('DATABASE_USER'),
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
         password: config.get<string>('DATABASE_PASSWORD'),
         database: 'Travel Booking Portal Database',
         entities: [User, Trip, Flight, Booking],

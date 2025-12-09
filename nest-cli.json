@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/trip-service/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/trip-service/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/trip-service",
+  "projects": {
+    "cancellation-service": {
+      "type": "application",
+      "root": "apps/cancellation-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/cancellation-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/cancellation-service/tsconfig.app.json"
+      }
+    },
+    "trip-service": {
+      "type": "application",
+      "root": "apps/trip-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/trip-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/trip-service/tsconfig.app.json"
+      }
+    }
+  }
+}
